@@ -33,7 +33,6 @@ const listerMedecins = async () => {
 const reserverRdv = async (patientUserId, donnees) => {
   const { medecin_id, date_heure, type } = donnees;
 
-  // Verifier que le patient existe
   const { data: patient, error: erreurPatient } = await supabaseAdmin
     .from('patients')
     .select('id')
@@ -44,7 +43,6 @@ const reserverRdv = async (patientUserId, donnees) => {
     throw new Error('Patient introuvable');
   }
 
-  // Verifier que le medecin existe et est disponible
   const { data: medecin, error: erreurMedecin } = await supabaseAdmin
     .from('medecins')
     .select('id, disponible, tarif')
@@ -59,7 +57,6 @@ const reserverRdv = async (patientUserId, donnees) => {
     throw new Error('Ce medecin n est pas disponible');
   }
 
-  // Verifier qu il n y a pas deja un rdv a cette heure
   const { data: rdvExistant } = await supabaseAdmin
     .from('rendez_vous')
     .select('id')
@@ -72,7 +69,6 @@ const reserverRdv = async (patientUserId, donnees) => {
     throw new Error('Ce creneau est deja pris. Choisissez un autre horaire.');
   }
 
-  // Creer le rendez-vous
   const { data: nouveauRdv, error: erreurRdv } = await supabaseAdmin
     .from('rendez_vous')
     .insert([{
@@ -94,7 +90,6 @@ const reserverRdv = async (patientUserId, donnees) => {
 // LISTER LES RDV D UN PATIENT
 // =============================================
 const listerRdvPatient = async (patientUserId) => {
-  // Recuperer l id du patient
   const { data: patient } = await supabaseAdmin
     .from('patients')
     .select('id')
@@ -131,7 +126,6 @@ const listerRdvPatient = async (patientUserId) => {
 // LISTER LES RDV D UN MEDECIN
 // =============================================
 const listerRdvMedecin = async (medecinUserId) => {
-  // Recuperer l id du medecin
   const { data: medecin } = await supabaseAdmin
     .from('medecins')
     .select('id')
@@ -149,8 +143,10 @@ const listerRdvMedecin = async (medecinUserId) => {
       type,
       paiement_statut,
       patients (
+        id,
         date_naissance,
         groupe_sanguin,
+        antecedents,
         users (
           nom,
           prenom,
