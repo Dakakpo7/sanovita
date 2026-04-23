@@ -32,6 +32,10 @@ app.use('/api/consultations', require('./modules/consultations/consultation.rout
 app.use('/api/chatbot', require('./modules/chatbot/chatbot.routes'));
 app.use('/api/medicaments', require('./modules/medicaments/medicament.routes'));
 app.use('/api/admin', require('./modules/admin/admin.routes'));
+app.use('/api/patients', require('./modules/patients/patient.routes'));
+app.use('/api/medecins', require('./modules/medecins/medecin.routes'));
+app.use('/api/paiements', require('./modules/paiements/paiement.routes'));
+
 // ===== PAGE INTROUVABLE =====
 app.use((req, res) => {
   res.status(404).json({
