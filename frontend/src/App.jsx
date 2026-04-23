@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import useAuthStore from './store/authStore';
-
+import AdminPanel from './pages/admin/AdminPanel';
 // Pages
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -65,6 +65,11 @@ function App() {
             <MedecinDashboard />
           </RoutePrivee>
         } />
+        <Route path="/admin" element={
+  <RoutePrivee role="ADMIN">
+    <AdminPanel />
+  </RoutePrivee>
+} />
       </Routes>
     </BrowserRouter>
   );

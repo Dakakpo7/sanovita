@@ -38,11 +38,13 @@ function Login() {
       toast.success('Connexion reussie ! Bienvenue ' + utilisateur.prenom);
 
       // Rediriger selon le role
-      if (utilisateur.role === 'PATIENT') {
-        navigate('/patient/dashboard');
-      } else if (utilisateur.role === 'MEDECIN') {
-        navigate('/medecin/dashboard');
-      }
+     if (utilisateur.role === 'PATIENT') {
+  navigate('/patient/dashboard');
+} else if (utilisateur.role === 'MEDECIN') {
+  navigate('/medecin/dashboard');
+} else if (utilisateur.role === 'ADMIN') {
+  navigate('/admin');
+}
 
     } catch (erreur) {
       toast.error(erreur.response?.data?.message || 'Erreur de connexion');
