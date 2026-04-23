@@ -14,6 +14,7 @@ import RendezVous from './pages/RendezVous';
 import ProfilPatient from './pages/ProfilPatient';
 import ProfilMedecin from './pages/ProfilMedecin';
 import HistoriqueMedical from './pages/HistoriqueMedical';
+import Paiement from './pages/Paiement';
 
 // Composant pour proteger les routes privees
 const RoutePrivee = ({ children, role }) => {
@@ -69,6 +70,11 @@ function App() {
 <Route path="/patient/historique" element={
   <RoutePrivee role="PATIENT">
     <HistoriqueMedical />
+  </RoutePrivee>
+} />
+<Route path="/patient/paiement" element={
+  <RoutePrivee role="PATIENT">
+    <Paiement />
   </RoutePrivee>
 } />
 

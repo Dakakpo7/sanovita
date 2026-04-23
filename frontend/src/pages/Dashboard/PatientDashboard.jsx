@@ -58,6 +58,12 @@ function PatientDashboard() {
   <h3 className="font-bold text-gray-800">Historique medical</h3>
   <p className="text-gray-500 text-sm mt-1">Voir mes consultations passees</p>
 </Link>
+<Link to="/patient/paiement"
+  className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition text-center">
+  <div className="text-4xl mb-3">💳</div>
+  <h3 className="font-bold text-gray-800">Mes paiements</h3>
+  <p className="text-gray-500 text-sm mt-1">Payer mes consultations</p>
+</Link>
         </div>
       </div>
     </div>
