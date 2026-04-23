@@ -1,7 +1,7 @@
-// Configuration principale de l'application Express
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const errorHandler = require('./middlewares/errorHandler');
 
 dotenv.config();
 
@@ -14,13 +14,14 @@ app.use(cors({
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use('/uploads', express.static('uploads'));
 
 // ===== ROUTE DE TEST =====
 app.get('/', (req, res) => {
   res.json({
-    message: '🏥 Bienvenue sur l\'API SanoVita !',
+    message: 'Bienvenue sur l API SanoVita',
     version: '1.0.0',
-    status: 'En ligne ✅'
+    status: 'En ligne'
   });
 });
 
@@ -31,11 +32,14 @@ app.use('/api/consultations', require('./modules/consultations/consultation.rout
 app.use('/api/chatbot', require('./modules/chatbot/chatbot.routes'));
 app.use('/api/medicaments', require('./modules/medicaments/medicament.routes'));
 
-// ===== GESTION DES ERREURS =====
+// ===== PAGE INTROUVABLE =====
 app.use((req, res) => {
   res.status(404).json({
-    message: '❌ Cette page n\'existe pas'
+    message: 'Cette page n existe pas'
   });
 });
+
+// ===== GESTIONNAIRE D ERREURS GLOBAL =====
+app.use(errorHandler);
 
 module.exports = app;
