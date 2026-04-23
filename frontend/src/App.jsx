@@ -11,6 +11,9 @@ import MedecinDashboard from './pages/Dashboard/MedecinDashboard';
 import Medicaments from './pages/Medicaments';
 import Chatbot from './pages/Chatbot';
 import RendezVous from './pages/RendezVous';
+import ProfilPatient from './pages/ProfilPatient';
+import ProfilMedecin from './pages/ProfilMedecin';
+
 
 // Composant pour proteger les routes privees
 const RoutePrivee = ({ children, role }) => {
@@ -58,6 +61,11 @@ function App() {
             <RendezVous />
           </RoutePrivee>
         } />
+        <Route path="/patient/profil" element={
+  <RoutePrivee role="PATIENT">
+    <ProfilPatient />
+  </RoutePrivee>
+} />
 
         {/* Pages privees MEDECIN */}
         <Route path="/medecin/dashboard" element={
@@ -65,6 +73,11 @@ function App() {
             <MedecinDashboard />
           </RoutePrivee>
         } />
+        <Route path="/medecin/profil" element={
+  <RoutePrivee role="MEDECIN">
+    <ProfilMedecin />
+  </RoutePrivee>
+} />
         <Route path="/admin" element={
   <RoutePrivee role="ADMIN">
     <AdminPanel />

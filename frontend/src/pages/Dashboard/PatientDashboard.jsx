@@ -46,6 +46,12 @@ function PatientDashboard() {
             <h3 className="font-bold text-gray-800">Chatbot medical</h3>
             <p className="text-gray-500 text-sm mt-1">Obtenir des conseils</p>
           </Link>
+          <Link to="/patient/profil"
+  className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition text-center">
+  <div className="text-4xl mb-3">👤</div>
+  <h3 className="font-bold text-gray-800">Mon profil</h3>
+  <p className="text-gray-500 text-sm mt-1">Voir et modifier mes infos</p>
+</Link>
         </div>
       </div>
     </div>

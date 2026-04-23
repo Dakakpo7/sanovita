@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import api from '../../services/api';
 import useAuthStore from '../../store/authStore';
@@ -229,6 +230,10 @@ function MedecinDashboard() {
           <span className="text-gray-600 font-medium">
             Dr {utilisateur?.nom} {utilisateur?.prenom}
           </span>
+          <Link to="/medecin/profil"
+  className="px-4 py-2 bg-blue-50 text-blue-600 rounded-lg hover:bg-blue-100 transition">
+  Mon profil
+</Link>
           <button onClick={deconnecter}
             className="px-4 py-2 bg-red-100 text-red-600 rounded-lg hover:bg-red-200 transition">
             Deconnexion
